@@ -504,10 +504,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         <img src="${haircut.image}" alt="${haircut.name}" loading="lazy">
                         <div class="card-overlay">
                             <h3>${haircut.name}</h3>
+                            <div class="quick-price">${haircut.price}</div>
                         </div>
                     </div>
                     <div class="flip-card-back glass-card">
-                        <h3 class="neon-text-small">${haircut.name}</h3>
+                        <h3>${haircut.name}</h3>
                         <p>${haircut.description}</p>
                         <div class="price">${haircut.price}</div>
                         <div class="card-details">
