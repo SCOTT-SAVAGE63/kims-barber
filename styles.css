@@ -1432,3 +1432,306 @@ a:focus {
         animation: none;
     }
 }
+
+/* 404 ERROR PAGE */
+.error-404 {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 8rem 2rem 4rem;
+}
+
+.error-content {
+    text-align: center;
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s ease;
+}
+
+.error-icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2rem;
+    color: var(--color-electric-blue);
+    animation: iconPulse 2s infinite;
+}
+
+.error-icon svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 20px var(--color-electric-blue));
+}
+
+.error-code {
+    font-size: clamp(6rem, 15vw, 12rem);
+    line-height: 1;
+    margin-bottom: 1rem;
+    font-weight: 900;
+}
+
+.error-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--color-cyan);
+    margin-bottom: 1.5rem;
+}
+
+.error-message {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: var(--color-silver);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.error-quote {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--color-electric-blue);
+    font-style: italic;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 5px var(--color-electric-blue);
+}
+
+.error-actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+}
+
+.error-links {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 217, 255, 0.2);
+}
+
+.error-links p {
+    color: var(--color-silver);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.quick-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.quick-links a {
+    color: var(--color-electric-blue);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.quick-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-electric-blue);
+    box-shadow: 0 0 10px var(--color-electric-blue);
+    transition: width var(--transition-speed) ease;
+}
+
+.quick-links a:hover::after {
+    width: 100%;
+}
+
+.quick-links a:hover {
+    text-shadow: 0 0 10px var(--color-electric-blue);
+}
+
+/* KIM'S PROFILE SECTION */
+.kims-profile {
+    padding: 5rem 0;
+    position: relative;
+}
+
+.profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.profile-card {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding: 3rem;
+}
+
+.profile-image-wrapper {
+    position: relative;
+}
+
+.profile-image {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 3px solid var(--color-electric-blue);
+    box-shadow: 0 0 40px rgba(0, 217, 255, 0.4);
+    position: relative;
+}
+
+.profile-image::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--color-electric-blue), var(--color-cyan), var(--color-electric-blue));
+    border-radius: 15px;
+    z-index: -1;
+    animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.95) contrast(1.1);
+}
+
+.profile-badge {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-electric-blue);
+    color: var(--color-black);
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px var(--color-electric-blue);
+    white-space: nowrap;
+}
+
+.profile-content h2 {
+    color: var(--color-electric-blue);
+    margin-bottom: 0.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    text-shadow: 0 0 10px var(--color-electric-blue);
+}
+
+.profile-title {
+    color: var(--color-cyan);
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.profile-content p {
+    color: var(--color-silver);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.profile-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(0, 217, 255, 0.05);
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    border-radius: 10px;
+    transition: all var(--transition-speed) ease;
+}
+
+.stat-item:hover {
+    border-color: var(--color-electric-blue);
+    background: rgba(0, 217, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-electric-blue);
+    text-shadow: 0 0 10px var(--color-electric-blue);
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--color-silver);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.profile-quote {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-left: 3px solid var(--color-cyan);
+    background: rgba(0, 255, 245, 0.05);
+    border-radius: 0 10px 10px 0;
+}
+
+.profile-quote p {
+    color: var(--color-cyan);
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+/* Responsive for Kim's Profile */
+@media (max-width: 768px) {
+    .profile-card {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+    }
+    
+    .profile-image-wrapper {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    
+    .profile-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .error-actions {
+        flex-direction: column;
+    }
+    
+    .error-actions .btn {
+        width: 100%;
+    }
+    
+    .quick-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
