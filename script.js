@@ -438,6 +438,177 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('%c"Cheap barbers are not skilled, skilled barbers are not cheap."', 'color: #C0C0C0; font-style: italic;');
     
     // ==========================================
+    // HAIRCUT GALLERY WITH PAGINATION
+    // ==========================================
+    const haircutsGrid = document.getElementById('haircutsGrid');
+    const showMoreBtn = document.getElementById('showMoreBtn');
+    const haircutCount = document.getElementById('haircutCount');
+    
+    if (haircutsGrid) {
+        // Sample haircut data - You can add up to 100+ items here
+        const haircuts = [
+            {
+                name: "The Fade",
+                image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&h=600&fit=crop",
+                description: "A timeless classic featuring a gradual transition from short to long hair. Perfect for professionals and trendsetters alike. Low maintenance with maximum style impact. Works with all hair types and face shapes.",
+                price: "R150",
+                duration: "45 min"
+            },
+            {
+                name: "Executive Cut",
+                image: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&h=600&fit=crop",
+                description: "Sophisticated and polished for the modern professional. Clean lines, structured shape, and refined styling. Ideal for boardrooms and business meetings. Maintains sharp appearance for weeks between cuts.",
+                price: "R200",
+                duration: "50 min"
+            },
+            {
+                name: "The Buzz",
+                image: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&h=600&fit=crop",
+                description: "Clean, sharp, and effortlessly cool. The ultimate low-maintenance cut for active lifestyles. Uniform length throughout with precision blade work. Perfect for athletes, military personnel, or anyone who values simplicity.",
+                price: "R100",
+                duration: "30 min"
+            },
+            {
+                name: "Afro Shaping",
+                image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&h=600&fit=crop",
+                description: "Expert shaping and texturing for natural hair. Enhances volume while maintaining healthy texture. Includes personalized styling consultation and product recommendations. Celebrates natural hair with precision and care.",
+                price: "R180",
+                duration: "60 min"
+            },
+            {
+                name: "Beard Trim",
+                image: "https://images.unsplash.com/photo-1621607512214-68297480165e?w=600&h=600&fit=crop",
+                description: "Professional grooming for your facial hair. Precise shaping, clean lines, and expert contouring. Hot towel treatment included for ultimate comfort. Complements any haircut for a complete look.",
+                price: "R80",
+                duration: "25 min"
+            }
+            // ADD MORE HAIRCUTS HERE - Up to 100+
+            // Just copy the object format above and paste new items
+            // The script will automatically handle pagination
+        ];
+        
+        let currentlyShown = 0;
+        const itemsPerPage = 10;
+        
+        // Function to create a haircut card
+        function createHaircutCard(haircut, index) {
+            const card = document.createElement('div');
+            card.className = 'flip-card fade-in';
+            if (index >= itemsPerPage) {
+                card.classList.add('hidden-haircut');
+            }
+            
+            card.innerHTML = `
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="${haircut.image}" alt="${haircut.name}" loading="lazy">
+                        <div class="card-overlay">
+                            <h3>${haircut.name}</h3>
+                        </div>
+                    </div>
+                    <div class="flip-card-back glass-card">
+                        <h3 class="neon-text-small">${haircut.name}</h3>
+                        <p>${haircut.description}</p>
+                        <div class="price">${haircut.price}</div>
+                        <div class="card-details">
+                            <div class="detail">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                                <span>${haircut.duration}</span>
+                            </div>
+                            <div class="detail">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 6l12 12M6 18L18 6"/>
+                                </svg>
+                                <span>Expert</span>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="btn btn-small">Book This Cut</a>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+        
+        // Initial load - show first 10 items
+        function loadInitialHaircuts() {
+            haircuts.forEach((haircut, index) => {
+                const card = createHaircutCard(haircut, index);
+                haircutsGrid.appendChild(card);
+            });
+            
+            currentlyShown = Math.min(itemsPerPage, haircuts.length);
+            updateCounter();
+            
+            // Hide button if 10 or fewer items
+            if (haircuts.length <= itemsPerPage) {
+                showMoreBtn.style.display = 'none';
+            }
+            
+            // Trigger fade-in animations
+            setTimeout(() => {
+                const visibleCards = document.querySelectorAll('.flip-card:not(.hidden-haircut)');
+                visibleCards.forEach(card => {
+                    if (observer) {
+                        observer.observe(card);
+                    }
+                });
+            }, 100);
+        }
+        
+        // Show more functionality
+        function showMoreHaircuts() {
+            const hiddenCards = document.querySelectorAll('.flip-card.hidden-haircut');
+            const cardsToShow = Array.from(hiddenCards).slice(0, itemsPerPage);
+            
+            cardsToShow.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.remove('hidden-haircut');
+                    if (observer) {
+                        observer.observe(card);
+                    }
+                }, index * 50); // Stagger animation
+            });
+            
+            currentlyShown += cardsToShow.length;
+            updateCounter();
+            
+            // Hide button if all shown
+            if (currentlyShown >= haircuts.length) {
+                showMoreBtn.classList.add('hidden');
+            }
+            
+            // Smooth scroll to first newly shown card
+            if (cardsToShow.length > 0) {
+                setTimeout(() => {
+                    cardsToShow[0].scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'nearest' 
+                    });
+                }, 100);
+            }
+        }
+        
+        // Update counter text
+        function updateCounter() {
+            if (haircutCount) {
+                haircutCount.textContent = `Showing ${currentlyShown} of ${haircuts.length} haircut styles`;
+            }
+        }
+        
+        // Event listener for show more button
+        if (showMoreBtn) {
+            showMoreBtn.addEventListener('click', showMoreHaircuts);
+        }
+        
+        // Initialize
+        loadInitialHaircuts();
+    }
+    
+    // ==========================================
     // INITIALIZATION COMPLETE
     // ==========================================
     console.log('✅ Kim\'s Barbershop website fully loaded and interactive!');
