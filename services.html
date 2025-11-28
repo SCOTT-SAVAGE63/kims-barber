@@ -38,6 +38,108 @@
             </div>
         </section>
 
+        <!-- LAUNDRY SECTION FIRST -->
+        <section class="laundry-section" id="laundry">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title neon-text-cyan">LAUNDRY SERVICES</h2>
+                    <p class="section-subtitle">Wash, Dry & Fold by Basket Size</p>
+                </div>
+
+                <div class="pricing-cards">
+                    <div class="pricing-card glass-card fade-in">
+                        <div class="basket-icon small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9h18v12a2 2 0 01-2 2H5a2 2 0 01-2-2V9zM7.5 3L6 9M16.5 3L18 9"/>
+                            </svg>
+                        </div>
+                        <h3>SMALL</h3>
+                        <p class="basket-description">Up to 5kg<br>Perfect for singles</p>
+                        <div class="price-large">R50</div>
+                        <ul class="features-list">
+                            <li>Professional wash</li>
+                            <li>Tumble dry</li>
+                            <li>Neatly folded</li>
+                            <li>Same/next day service</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-secondary">Select Package</a>
+                    </div>
+
+                    <div class="pricing-card glass-card recommended fade-in">
+                        <div class="recommended-badge">RECOMMENDED</div>
+                        <div class="basket-icon medium">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9h18v12a2 2 0 01-2 2H5a2 2 0 01-2-2V9zM7.5 3L6 9M16.5 3L18 9"/>
+                            </svg>
+                        </div>
+                        <h3>MEDIUM</h3>
+                        <p class="basket-description">5-10kg<br>Ideal for couples</p>
+                        <div class="price-large">R85</div>
+                        <ul class="features-list">
+                            <li>Professional wash</li>
+                            <li>Tumble dry</li>
+                            <li>Neatly folded</li>
+                            <li>Same/next day service</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary">Select Package</a>
+                    </div>
+
+                    <div class="pricing-card glass-card fade-in">
+                        <div class="basket-icon large">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9h18v12a2 2 0 01-2 2H5a2 2 0 01-2-2V9zM7.5 3L6 9M16.5 3L18 9"/>
+                            </svg>
+                        </div>
+                        <h3>LARGE</h3>
+                        <p class="basket-description">10-15kg<br>Family size</p>
+                        <div class="price-large">R120</div>
+                        <ul class="features-list">
+                            <li>Professional wash</li>
+                            <li>Tumble dry</li>
+                            <li>Neatly folded</li>
+                            <li>Same/next day service</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-secondary">Select Package</a>
+                    </div>
+                </div>
+
+                <div class="laundry-info glass-card">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            <div>
+                                <h4>Turnaround Time</h4>
+                                <p>Same day (before 10 AM) or Next day</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                                <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+                            </svg>
+                            <div>
+                                <h4>Special Instructions</h4>
+                                <p>Bring your laundry in labeled bags</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                            </svg>
+                            <div>
+                                <h4>Custom Requests</h4>
+                                <p>Contact us for special care instructions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HAIRCUTS SECTION SECOND -->
         <section class="haircuts-section" id="haircuts">
             <div class="container">
                 <div class="section-header">
@@ -45,7 +147,7 @@
                     <p class="section-subtitle">Hover to see details and pricing</p>
                 </div>
 
-                <div class="haircuts-grid">
+                <div class="haircuts-grid" id="haircutsGrid">
                     <div class="flip-card fade-in">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
@@ -207,6 +309,16 @@
                     </div>
                 </div>
 
+                <div class="show-more-container">
+                    <button class="show-more-btn" id="showMoreBtn">
+                        <span>Show More Haircuts</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12l7 7 7-7"/>
+                        </svg>
+                    </button>
+                    <span class="haircut-count" id="haircutCount"></span>
+                </div>
+
                 <div class="service-notes glass-card">
                     <p><strong>All cuts include consultation and styling</strong></p>
                     <p>Custom styles available — ask Kim about your unique vision</p>
@@ -313,6 +425,7 @@
                 </div>
             </div>
         </section>
+
     </main>
 
     <button id="back-to-top" aria-label="Back to top">
