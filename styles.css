@@ -615,6 +615,13 @@ section {
 .flip-card {
     perspective: 1000px;
     height: 450px;
+    position: relative;
+    z-index: 1;
+}
+
+.flip-card:hover,
+.flip-card.flipped {
+    z-index: 10;
 }
 
 .flip-card-inner {
@@ -678,6 +685,7 @@ section {
     justify-content: center;
     padding: 2rem;
     text-align: center;
+    z-index: 2;
 }
 
 .flip-card-back h3 {
